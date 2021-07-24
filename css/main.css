@@ -7,7 +7,7 @@ html,body{
   margin: 0;
   padding: 0;
 }
-/*#map{
+#map{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -18,7 +18,7 @@ body {
   color: #36454f;
   font-family: 'Roboto Mono', monospace;
 }
-*/
+
 h1 {
   font-family: 'Oswald', monospace;
   font-weight: 500;
@@ -92,53 +92,4 @@ padding: 10px;
   left: 50px;
   z-index: 10;
   background: green;
-}
-
-body,html {
-	margin:0;
-	height:100%;
-	width:100%;
-}
-
-#map {
-	height: 100%;
-}
-
-body {
-	display: grid;
-	grid-template-rows: 80px 1fr 50px;
-	grid-template-columns: 300px 1fr;
-	grid-template-areas: 
-	"header header"
-	"sidebar content"
-	"footer footer";
-}
-
-.header {
-	grid-area: header;
-	padding:10px;
-	background-color: #273d50;
-	color: white;
-	font-size: 2em;
-}
-
-.content {
-	grid-area: content;
-}
-
-.footer {
-	grid-area: footer;
-	padding:10px;
-	background-color: rgb(175, 175, 175);
-}
-
-.marker {
-    color: red;
-}
-
-.sidebar-item {
-	padding: 10px;
-    background: gainsboro;
-    border: 1px solid gray;
-    margin: 5px;
 }
