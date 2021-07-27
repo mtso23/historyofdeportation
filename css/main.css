@@ -16,13 +16,15 @@ html,body{
 
 body {
   color: #36454f;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'oswald', monospace;
 }
 
 h1 {
   font-family: 'Oswald', monospace;
   font-weight: 500;
   font-size: 2.5em;
+  padding: 10px;
+  margin-left: 30px;
 }
 
 .container-lg {
@@ -40,14 +42,14 @@ h1 {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-family:'Roboto Mono', monospace;
+  font-family:'oswald', monospace;
   font-size: 16px;
   position: relative;
   z-index: 5;
 }
 
 .yr {
-  font-family: 'Roboto-Mono', monospace;
+  font-family: 'oswald', monospace;
   font-size: 42px;
   text-shadow: 2px 2px 4px #FFFF;
 }
@@ -67,20 +69,24 @@ h1 {
 
 .topright {
   position: absolute;
-  top: 8px;
-  right: 20px;
+  top: 0px;
+  right: 50px;
   z-index: 10;
-  background: green;
-  padding: 50px;
+  background:white;
+  opacity: 75%;
+  padding: 20px;
 }
 
 .top5 {
-  font-family: 'Roboto-Mono', monospace;
+  font-family: 'oswald', monospace;
   font-size: 24px;
+  z-index: 10;
+  font-weight: 400;
+  margin-left: 100px;
 }
 
 .center {
-border: 5px solid yellow;
+/*border: 5px solid yellow;*/
 text-align: center;
 padding: 10px;
 }
@@ -91,5 +97,115 @@ padding: 10px;
   top: 10px;
   left: 50px;
   z-index: 10;
-  background: green;
+}
+
+.cellit {
+	position: relative;
+	width: 400px;
+	border: 1px solid #fff;
+	background: #fff;
+	border: 5px double #fff;
+	border-radius: 20px;
+	padding: 20px;
+	/*box-shadow: inset 6px -6px 30px rgba(0,0,0,.2),inset -6px 6px 25px rgba(255,255,255,0.2);*/
+	color: #36454f;
+}
+
+.cellit:before {
+	position: absolute;
+	content: "";
+	z-index: 3;
+	width: 94%;
+	height: 100%;
+	left: 3%;
+	bottom: 10px;
+}
+
+.cellit:after
+{	position: absolute;
+	width: 94%;
+	height: 96.5%;
+	left: 3%;
+	top: 10px;
+	border-radius: 20px;
+	/*border-top: 1px solid rgba(255,255,255,.5);
+	border-right: 1px solid rgba(255,255,255,.2);
+	border-bottom: 1px solid rgba(0,0,0,.3);
+	border-left: 1px solid rgba(236, 96, 96, 0.5);
+	box-shadow: inset 0px 0px 20px rgba(0,0,0,.5);*/
+	content: "";
+
+}
+#news>div {
+	margin-bottom: 20px;
+}
+© 2021 GitHub, Inc.
+
+#leaderboard{
+	position:relative;
+	width:200px;
+	padding:10px;
+	left:50%;
+	margin-left:-200px;
+}
+#leaderboard ul{
+	position:relative;
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+#leaderboard ul li{
+	position:absolute;
+	display:block;
+	width:100%;
+	padding:10px;
+	/*border-radius:5px;
+	background: linear-gradient(to top,rgb(241, 241, 241) 0%, rgb(125,125,125) 100%);*/
+	border-bottom:1px solid #FFFF;
+	border-top:1px solid #FFFF;
+	/*box-shadow: 3px 3px 5px #FFFF;*/
+	opacity: 1;
+	transition: top cubic-bezier(1.000, -0.530, 0.405, 1.425) 3s;
+}
+#leaderboard ul li a{
+	display: block;
+	text-decoration: none;
+	font-family:  oswald;
+	color: #36454f
+}
+#leaderboard ul li a:hover{
+	text-shadow: 0 0 10px rgb(48, 48, 182);
+}
+#leaderboard li span {
+	float:right;
+	color:black;
+	opacity: 1;
+	transition: opacity ease 3s;
+}
+#leaderboard li span:after {
+	content:' Deportations';
+	color:rgb(60, 62, 65);
+	font-size:10px;
+}
+#leaderboard .move{
+
+}
+
+#leaderboard .replace{
+	animation: replace 2s;
+	-webkit-animation: replace 2s;
+}
+#leaderboard .move span,#leaderboard .replace span{
+	opacity:0;
+}
+
+@keyframes replace
+{
+	0% {left: -500px;opacity:0;}
+	100% {left: 0px;opacity:1;}
+}
+@-webkit-keyframes replace
+{
+	0% {left: -500px;opacity:0;}
+	100% {left: 0px;opacity:1;}
 }

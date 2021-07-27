@@ -5,75 +5,69 @@
     <meta charset="utf-8">
     <title>A History of Deportation Test Map - </title>
     <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <title>Migration Layer</title>
     <link rel="stylesheet" href="lib/leaflet.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>A History of US Deportation</h1>
-    <p></p>
     <div id="map"></div>
-    <div class="center">
-    <!--<input type="button" value="setData" class="btn" onclick="setData()"> -->
-    <!-- <input type="button" value="hide" class="btn" onclick="hide()">
-        <input type="button" value="show" class="btn" onclick="show()"> -->
-        <input type="button" value="Pause" class="btn" onclick="pause()" />
-        <input type="button" value="Play" class="btn" onclick="play()" />
-    <!--<input type="button" value="destroy" class="btn" onclick="destroy()"> -->    
-    </div>
+        <div class="center">
+            <!--<input type="button" value="setData" class="btn" onclick="setData()"> -->
+            <!-- <input type="button" value="hide" class="btn" onclick="hide()">
+            <input type="button" value="show" class="btn" onclick="show()"> -->
+            <input type="button" value="Pause" class="btn" onclick="pause()" />
+            <input type="button" value="Play" class="btn" onclick="play()" />
+            <!--<input type="button" value="destroy" class="btn" onclick="destroy()"> -->    
+        </div>
     <script src="lib/leaflet.js"></script>
     <script src="js/src.js"></script>
     <script type="text/javascript" src="js/data_config.js"></script>
     <script type="text/javascript" src="js/data_new.js"></script>
+    <script type="text/javascript" src="top5.js"></script>
     <script>
         var lrmap = L.map('map', {zoomControl: false}).setView([25, 0], 3);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-	maxZoom: 19,
-})
-        .addTo(lrmap);
-        var data = [{"from":[-95.712891,37.090240],"to":[-102.552788,23.634501],"labels":["United States","Mexico"],"color":"#ff3a31", "value":27118},{"from":[-95.712891,37.090240],"to":[-106.346771,56.130367],"labels":[null,"Canada"],"color":"#ff7e2b","value":1267},{"from":[-95.712891,37.090240],"to":[-88.896530,13.794185],"labels":[null,"El Salvador"],"color":"#ffc726","value":2117},{"from":[-95.712891,37.090240],"to":[-3.435973,55.378052],"labels":[null,"United Kingdom"],"color":"#e9ff20", "value":248},{"from":[-95.712891,37.090240],"to":[-77.32573,18.15246],"labels":[null,"Jamaica"],"color":"#d77681", "value":1044}];
-        var data2=[{"from":[-73.875523,40.781063],"to":[-80.247887,25.792296],"labels":["New York","Miami"],"color":"#d7768a"},{"from":[-73.875523,40.781063],"to":[-118.2705,33.9984],"labels":[null,"Los Angeles"],"color":"#00ccff"},{"from":[-73.875523,40.781063],"to":[-87.724088,41.917846],"labels":[null,"Chicago"],"color":"#ffc726"},{"from":[-73.875523,40.781063],"to":[-71.058437,42.35902],"labels":[null,"Boston"],"color":"#e9ff20"},{"from":[-73.875523,40.781063],"to":[-75.683057,45.42172],"labels":[null,"Ottawa"],"color":"#99ff1b"}];
+		L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+	        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	        subdomains: 'abcd',
+	        maxZoom: 5,
+	        minZoom: 3,
+            })
+            .addTo(lrmap);
+        //var data = [{"from":[-95.712891,37.090240],"to":[-102.552788,23.634501],"labels":["United States","Mexico"],"color":"#ff3a31", "value":27118},{"from":[-95.712891,37.090240],"to":[-106.346771,56.130367],"labels":[null,"Canada"],"color":"#ff7e2b","value":1267},{"from":[-95.712891,37.090240],"to":[-88.896530,13.794185],"labels":[null,"El Salvador"],"color":"#ffc726","value":2117},{"from":[-95.712891,37.090240],"to":[-3.435973,55.378052],"labels":[null,"United Kingdom"],"color":"#e9ff20", "value":248},{"from":[-95.712891,37.090240],"to":[-77.32573,18.15246],"labels":[null,"Jamaica"],"color":"#d77681", "value":1044}];
+        //var data2=[{"from":[-73.875523,40.781063],"to":[-80.247887,25.792296],"labels":["New York","Miami"],"color":"#d7768a"},{"from":[-73.875523,40.781063],"to":[-118.2705,33.9984],"labels":[null,"Los Angeles"],"color":"#00ccff"},{"from":[-73.875523,40.781063],"to":[-87.724088,41.917846],"labels":[null,"Chicago"],"color":"#ffc726"},{"from":[-73.875523,40.781063],"to":[-71.058437,42.35902],"labels":[null,"Boston"],"color":"#e9ff20"},{"from":[-73.875523,40.781063],"to":[-75.683057,45.42172],"labels":[null,"Ottawa"],"color":"#99ff1b"}];
         //data = data.map(item => { return {...item, value: parseInt(Math.random()*20)}});
-        data2 = data2.map(item => { return {...item, value: parseInt(Math.random()*20)}});
+        //data_im = data_im.map(item => { return {...item, value: parseInt(Math.random()*20)}});
         var migrationLayer = new L.migrationLayer({
             map: lrmap,
             data: data_im,
             pulseRadius:30,
-            pulseBorderWidth:1,
+            pulseBorderWidth:2,
             arcWidth:.5,
-            arcLabel:true,
+            arcLabel:false,
             arcLabelFont:'10px sans-serif',
-            maxWidth:15
+            maxWidth:20
             }
         );
         migrationLayer.addTo(lrmap);
-        function setData(){
-            migrationLayer.setData(data2);
-        }
-        function hide(){
-            migrationLayer.hide();
-        }
-        function show(){
-            migrationLayer.show();
-        }
+        //function setData(){
+        //    migrationLayer.setData(data2);
+        //}
+        //function hide(){
+        //    migrationLayer.hide();
+        //}
+        //function show(){
+        //    migrationLayer.show();
+        //}
         function play(){
             migrationLayer.play();
         }
         function pause(){
             migrationLayer.pause();
         }
-        function destroy() {
-            migrationLayer.destroy();
-        }
+        //function destroy() {
+        //    migrationLayer.destroy();
+        //}
     </script>
     <div class="container">
     <div class="year">
@@ -81,11 +75,14 @@
     </div> 
     </div>
     <div class="container">
-        <p class="topright">Top 5</p>
-    </div> 
-</body>
+		<div class= "topright">
+        <p class="top5"><span>Top 5</span></p>
+        <div id="leaderboard" class="cellit"></div>
+        <script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/leaderboard.js"></script>
+        </div>
+    </div>
 
-</html>
-
+    </script>
   </body>
 </html>

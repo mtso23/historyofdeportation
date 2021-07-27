@@ -90,8 +90,8 @@
                 endY = options.endY;
             //两点之间的圆有多个，通过两点及半径便可以定出两个圆，根据需要选取其中一个圆
             var L = Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
-            var m = (startX + endX) / 2; // 横轴中点
-            var n = (startY + endY) / 2; // 纵轴中点
+            var m = (startX + endX) / 2; // 横轴中点 Midpoint of Horizontal Axis
+            var n = (startY + endY) / 2; // 纵轴中点 Midpoint of Vertical Axis
             var factor = 1.5;
 
             var centerX = (startY - endY) * factor + m;
@@ -244,7 +244,7 @@
                 y: 80,
                 rotation: 50 * Math.PI / 180,
                 style: 'circle',
-                color: 'rgb(255, 255, 255)',
+                color: 'rgb(11, 14, 1)',
                 size: size+1,
                 borderWidth: size ,
                 borderColor: this.strokeStyle
@@ -254,7 +254,7 @@
         S.prototype.drawArc = function (context, strokeColor, lineWidth, startAngle, endAngle) {
             context.save();
             context.lineWidth = lineWidth;
-            // context.lineWidth = 5;
+            //context.lineWidth = 5;
             context.strokeStyle = strokeColor;
             context.shadowColor = this.strokeStyle;
             //context.shadowBlur = 5;
@@ -279,18 +279,18 @@
             this.drawArc(context, strokeColor, this.lineWidth, this.startAngle, this.arcAngle);
 
             // Tailing Effect
-            var count = this.tailPointsCount;
-            for (var i = 0; i < count; i++) {
-                var arcColor = utils.calculateColor(this.strokeStyle, 0.3 - 0.3 / count * i);
-                var tailLineWidth = 5;
-                if (this.trailAngle - this.deltaAngle * i > this.startAngle) {
-                    this.drawArc(context, arcColor,
-                        tailLineWidth - tailLineWidth / count * i,
-                        this.trailAngle - this.deltaAngle * i,
-                        this.trailAngle
-                    );
-                }
-            }
+            //var count = this.tailPointsCount;
+            //for (var i = 0; i < count; i++) {
+            //    var arcColor = utils.calculateColor(this.strokeStyle, 0.3 - 0.3 / count * i);
+            //    var tailLineWidth = 5;
+            //    if (this.trailAngle - this.deltaAngle * i > this.startAngle) {
+            //        this.drawArc(context, arcColor,
+            //            tailLineWidth - tailLineWidth / count * i,
+            //            this.trailAngle - this.deltaAngle * i,
+            //            this.trailAngle
+            //        );
+            //    }
+            //}
 
             context.save();
             context.translate(this.centerX, this.centerY);
@@ -452,7 +452,7 @@
             pulseBorderWidth: 3,
             arcWidth: 1,
             arcLabel: true,
-            arcLabelFont: '15px sans-serif',
+            arcLabelFont: '15x sans-serif',
             Marker: {},
             Spark: {}
 
