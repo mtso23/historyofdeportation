@@ -155,21 +155,12 @@ var test = new BFG.Leaderboard({
 	sort:'count',
 	dataCallback:function(){
 		return [//simulates incoming data
-			{id:1,title:"Arya Stark",count:BFG.rnd(1,800)},
-			{id:2,title:"Sandor Clegane",count:BFG.rnd(1,800)},
-			{id:3,title:"Robb Stark",count:BFG.rnd(1,800)},
-			{id:4,title:"Bronn",count:BFG.rnd(1,800)},
-			{id:5,title:"Tyrion Lannister",count:BFG.rnd(1,800)},
-			{id:6,title:"Jon Snow",count:BFG.rnd(1,800)},
-			{id:7,title:"Daenerys Targaryen",count:BFG.rnd(1,800)},
-			{id:8,title:"Samwell Tarly",count:BFG.rnd(1,800)},
-			{id:9,title:"Eddard Stark",count:BFG.rnd(1,800)},
-			{id:10,title:"Cersei Lannister",count:BFG.rnd(1,800)},
-			{id:11,title:"Catelyn Stark",count:BFG.rnd(1,800)},
-			{id:12,title:"Ygritte",count:BFG.rnd(1,800)},
-			{id:13,title:"Jaime Lannister",count:BFG.rnd(1,800)},
-			{id:14,title:"Bran Stark",count:BFG.rnd(1,800)},
-			{id:15,title:"Varys",count:BFG.rnd(1,800)}
+			{id:1,title:"Mexico",count:27118},
+			{id:2,title:"El Salvador",count:2117},
+			{id:3,title:"Honduras",count:1678},
+			{id:4,title:"Iran",count:58},
+			{id:5,title:"Canada",count:1267},
+			{id:6,title:"Guatemala",count:1370}
 		];
 	}
 });

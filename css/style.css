@@ -1,0 +1,145 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+
+/* Styles */
+html,body{
+  margin: 0;
+  padding: 0;
+}
+/*#map{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+body {
+  color: #36454f;
+  font-family: 'Roboto Mono', monospace;
+}
+*/
+h1 {
+  font-family: 'Oswald', monospace;
+  font-weight: 500;
+  font-size: 2.5em;
+}
+
+.container-lg {
+  max-width: 1012px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.btn {
+  position: relative;
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family:'Roboto Mono', monospace;
+  font-size: 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.yr {
+  font-family: 'Roboto-Mono', monospace;
+  font-size: 42px;
+  text-shadow: 2px 2px 4px #FFFF;
+}
+
+#event{
+  position: absolute;
+  top: 50px;
+  right: 500px;
+  height: 100px;
+  width: 400px;
+  z-index: 10;
+}
+
+.container {
+  position: relative;
+}
+
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  z-index: 10;
+  background: green;
+  padding: 50px;
+}
+
+.top5 {
+  font-family: 'Roboto-Mono', monospace;
+  font-size: 24px;
+  background: white;
+}
+
+.center {
+border: 5px solid yellow;
+text-align: center;
+padding: 10px;
+}
+
+.year {
+  position: absolute;
+  padding: 20px;
+  top: 10px;
+  left: 50px;
+  z-index: 10;
+  background: green;
+}
+
+body,html {
+	margin:0;
+	height:100%;
+	width:100%;
+}
+
+#map {
+	height: 100%;
+}
+
+body {
+	display: grid;
+	grid-template-rows: 80px 1fr 50px;
+	grid-template-columns: 300px 1fr;
+	grid-template-areas: 
+	"header header"
+	"sidebar content"
+	"footer footer";
+}
+
+.header {
+	grid-area: header;
+	padding:10px;
+	background-color: #273d50;
+	color: white;
+	font-size: 2em;
+}
+
+.content {
+	grid-area: content;
+}
+
+.footer {
+	grid-area: footer;
+	padding:10px;
+	background-color: rgb(175, 175, 175);
+}
+
+.marker {
+    color: red;
+}
+
+.sidebar-item {
+	padding: 10px;
+    background: gainsboro;
+    border: 1px solid gray;
+    margin: 5px;
+}

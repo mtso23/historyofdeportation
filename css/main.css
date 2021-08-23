@@ -77,12 +77,25 @@ h1 {
   padding: 20px;
 }
 
+.bottomleft {
+	position: fixed;
+	margin-bottom: 50px;
+	margin-left: 50px;
+	bottom: 0;
+	width: 600px;
+	height: 200px;
+	z-index: 10;
+	background:white;
+	opacity: 75%;
+	padding: 20px;
+  }
+
 .top5 {
   font-family: 'oswald', monospace;
   font-size: 24px;
   z-index: 10;
   font-weight: 400;
-  margin-left: 100px;
+  margin-left: 15%;
 }
 
 .center {
@@ -101,12 +114,12 @@ padding: 10px;
 
 .cellit {
 	position: relative;
-	width: 400px;
+	width: 250px;
 	border: 1px solid #fff;
 	background: #fff;
 	border: 5px double #fff;
-	border-radius: 20px;
-	padding: 20px;
+	border-radius: 10px;
+	padding: 10px;
 	/*box-shadow: inset 6px -6px 30px rgba(0,0,0,.2),inset -6px 6px 25px rgba(255,255,255,0.2);*/
 	color: #36454f;
 }
@@ -115,7 +128,7 @@ padding: 10px;
 	position: absolute;
 	content: "";
 	z-index: 3;
-	width: 94%;
+	width: 54%;
 	height: 100%;
 	left: 3%;
 	bottom: 10px;
@@ -123,7 +136,7 @@ padding: 10px;
 
 .cellit:after
 {	position: absolute;
-	width: 94%;
+	width: 54%;
 	height: 96.5%;
 	left: 3%;
 	top: 10px;
@@ -144,7 +157,7 @@ padding: 10px;
 #leaderboard{
 	position:relative;
 	width:200px;
-	padding:10px;
+	padding:0px;
 	left:50%;
 	margin-left:-200px;
 }
@@ -158,7 +171,7 @@ padding: 10px;
 	position:absolute;
 	display:block;
 	width:100%;
-	padding:10px;
+	padding:0px;
 	/*border-radius:5px;
 	background: linear-gradient(to top,rgb(241, 241, 241) 0%, rgb(125,125,125) 100%);*/
 	border-bottom:1px solid #FFFF;
@@ -209,3 +222,19 @@ padding: 10px;
 	0% {left: -500px;opacity:0;}
 	100% {left: 0px;opacity:1;}
 }
+
+.line {
+	fill: none;
+	stroke-width: 3px;
+  }
+  
+  .overlay {
+	fill: none;
+	pointer-events: all;
+  }
+  
+  .hover-line {
+	stroke: #B74779;
+	stroke-width: 2px;
+	stroke-dasharray: 3,3;
+  }
