@@ -23,7 +23,7 @@ h1 {
   font-family: 'Oswald', monospace;
   font-weight: 500;
   font-size: 2.5em;
-  padding: 10px;
+  padding: 0em;
   margin-left: 30px;
 }
 
@@ -50,7 +50,7 @@ h1 {
 
 .yr {
   font-family: 'oswald', monospace;
-  font-size: 42px;
+  font-size: 2em;
   text-shadow: 2px 2px 4px #FFFF;
 }
 
@@ -70,11 +70,11 @@ h1 {
 .topright {
   position: absolute;
   top: 0px;
-  right: 50px;
+  right: 3em;/*50px;*/
   z-index: 10;
   background:white;
   opacity: 75%;
-  padding: 20px;
+  padding: 1em;/*20px;*/
 }
 
 .bottomleft {
@@ -82,8 +82,8 @@ h1 {
 	margin-bottom: 50px;
 	margin-left: 50px;
 	bottom: 0;
-	width: 600px;
-	height: 200px;
+	width: 33%;
+	height: 25%;
 	z-index: 10;
 	background:white;
 	opacity: 75%;
@@ -92,7 +92,7 @@ h1 {
 
 .top5 {
   font-family: 'oswald', monospace;
-  font-size: 24px;
+  font-size: 1.5em;/*24px;*/
   z-index: 10;
   font-weight: 400;
   margin-left: 15%;
@@ -101,7 +101,12 @@ h1 {
 .center {
 /*border: 5px solid yellow;*/
 text-align: center;
-padding: 10px;
+/*padding: 10px;*/
+}
+
+.leaflet-popup-content-wrapper {
+	background-color: #020202;
+	color: #fff;
 }
 
 .year {
@@ -156,7 +161,7 @@ padding: 10px;
 
 #leaderboard{
 	position:relative;
-	width:200px;
+	/*width:200px;*/
 	padding:0px;
 	left:50%;
 	margin-left:-200px;
@@ -238,3 +243,4 @@ padding: 10px;
 	stroke-width: 2px;
 	stroke-dasharray: 3,3;
   }
+

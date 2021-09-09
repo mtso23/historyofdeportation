@@ -3,9 +3,146 @@
 // allow for  custom transitions
 // allow for custom sorts
 // allow for custom click/hover events
-"use strict";
-(function(BFG){
+//"use strict";
 
+//load Regional Data
+var url = "data/reg3.js";
+
+$.getScript(url, function(){
+	$(document).ready(function(){
+		console.log(reg3); 
+	});
+});
+
+//Start leaderboard Building
+"use strict";
+
+//Helper and common functions
+(function(BFG){
+	BFG.extend = function(obj){
+		var 	key,
+			args = Array.prototype.slice.call(arguments,1);
+		args.forEach(function(value,index,array){
+			for (key in value){
+				if (value.hasOwnProperty(key)){
+					obj[key] = value[key];
+				}
+			}
+		});
+		return obj;
+	};
+  
+	BFG.rnd = function (min,max){ //random on steriods
+		if (min instanceof Array){ //returns random array item
+			if(min.length === 0){
+				return undefined;
+			}
+			if(min.length === 1){
+				return min[0];
+			}
+			return min[rnd(0,min.length-1)];
+		}
+		if(typeof min === "object"){ // returns random object member
+			min = Object.keys(min);
+			return min[rnd(min.length-1)];
+		}
+		min = min === undefined?100:min; 
+		if (!max){  
+			max = min;
+			min = 0;
+		}
+		return	Math.floor(Math.random() * (max-min+1) + min);
+	};
+  
+	BFG.ArrayIndexOf = function(array,value,fn){ //I did not want to override the Array.prototype.indexOf
+		var result = -1;
+		array.forEach(function(v,i,a){
+			result = fn(value,v)?i:result;
+		});
+		return result;
+	};
+	window.BFG = BFG;
+})(window.BFG || {});
+
+//Erik Möller - polyfill for requestAnimationFrame
+(function() {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+
+Object.keys =Object.keys || function(o) {
+	if (o !== Object(o))
+		throw new TypeError('Object.keys called on a non-object');
+	var k=[],p;
+	for (p in o) if (Object.prototype.hasOwnProperty.call(o,p)) k.push(p);
+	return k;
+};
+
+window.assert = window.assert || function (value,message){
+	if(!message){
+		message = value;
+		value = true;
+	}
+	var ul = document.getElementById('assert');
+	if(!ul){
+		ul = document.createElement('ul');
+		ul.id = 'assert';
+		document.body.appendChild(ul);
+	}
+	var li = document.createElement('li');
+	li.className = value ? 'success':'fail';
+	li.appendChild(document.createTextNode(message));
+	ul.appendChild(li);
+};
+
+Array.prototype.forEach = Array.prototype.forEach || function(callback,context){
+	for(var i = 0,len = this.length;i < len;i++){
+		callback.call(context || null,this[i],i,this);
+	}
+};
+
+Array.prototype.difference = Array.prototype.difference || function(ar,fn){
+	var isInArray,result = [];
+	fn = fn || function(a,b){
+		return a===b;
+	};
+	for(var i = 0,len = this.length;i<len;i++){
+		isInArray = false;
+		for (var x = 0,lenx = ar.length;x<lenx;x++){
+			if (fn(this[i],ar[x])){
+				isInArray = true;
+				break;
+			}
+		}
+		if(!isInArray){
+			result.push(this[i]);
+		}
+	}
+	return result;
+};
+
+//Leaderboard
+(function(BFG){
 	var Leaderboard = function(o){
 		this.config = BFG.extend({
 			max:5,
@@ -79,8 +216,6 @@
 			return this;
 		},
 		doTransition:function(){
-			// *find all ui that no longer exist in data and change (fadein/out) to outstanding data
-			// *animate ui to new positions based on data sort
 			var 	oldElem = [],
 				heights = [],
 				replaceElem = [],
@@ -143,7 +278,7 @@ var test = new BFG.Leaderboard({
 	max:5,
 	margin:5,
 	display:function(item){
-		var 	content = document.createElement('div'),
+		var content = document.createElement('div'),
 			a = content.appendChild(document.createElement('a')),
 			span = document.createElement('span');
 		a.innerHTML = item.title;
@@ -155,7 +290,7 @@ var test = new BFG.Leaderboard({
 	sort:'count',
 	dataCallback:function(){
 		return [//simulates incoming data
-			{id:1,title:"Mexico",count:27118},
+			{id:1,title:"Mexico",count:27118 },
 			{id:2,title:"El Salvador",count:2117},
 			{id:3,title:"Honduras",count:1678},
 			{id:4,title:"Iran",count:58},

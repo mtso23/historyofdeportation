@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>A History of Deportation Test Map - </title>
+    <!--Style Libraries-->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="lib/leaflet.css">
-    <script src="js/papaparse.min.js"></script>
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"> -->
-    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Javascript Libraries-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.0/d3.min.js" integrity="sha512-0x7/VCkKLLt4wnkFqI8Cgv6no+AaS1TDgmHLOoU3hy/WVtYta2J6gnOIHhYYDJlDxPqEqAYLPS4gzVex4mGJLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--Data Loads-->
+    <script type="text/javascript" src="data/data_new.js"></script>
+    <script type="text/javascript" src="data/reg3.js"></script>
+    <script type="text/javascript" src="data/reg2.js"></script>
+    <script src="js/src.js"></script>
 </head>
 
 <body>
@@ -21,6 +25,7 @@
             <!--<input type="button" value="setData" class="btn" onclick="setData()"> -->
             <!-- <input type="button" value="hide" class="btn" onclick="hide()">
             <input type="button" value="show" class="btn" onclick="show()"> -->
+            <p class="yr">1993</p>
             <input type="button" value="Pause" class="btn" onclick="pause()" />
             <input type="button" value="Play" class="btn" onclick="play()" />
             <!--<input type="button" value="destroy" class="btn" onclick="destroy()"> -->    
@@ -43,13 +48,13 @@
         //data_im = data_im.map(item => { return {...item, value: parseInt(Math.random()*20)}});
         var migrationLayer = new L.migrationLayer({
             map: lrmap,
-            data: data_im,
+            data: data_im, //swap with data_im to see by country versus by continent
             pulseRadius:30,
             pulseBorderWidth:2,
             arcWidth:.5,
             arcLabel:false,
             arcLabelFont:'10px sans-serif',
-            maxWidth:20
+            maxWidth:10
             }
         );
         migrationLayer.addTo(lrmap);
@@ -71,77 +76,102 @@
         //function destroy() {
         //    migrationLayer.destroy();
         //}
+        var popup = L.popup();
+
+        function onMapClick (e) {
+            popup  
+                .setContent("Deportations " + data_im.value)
+                .openOn(lrmap);
+        }
+
+        lrmap.on('click', onMapClick);
+
+        // lrmap.on('click', function (e) {
+        //     document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + 'lng: ' + e.latlng.lng;
+        //     console.log('lat: ' + e.latlng.lat, 'lng: ' + e.latlng.lng)
+        // });
     </script>
-    <div class="container">
-    <div class="year">
-        <p class="yr">1993</p>
-    </div> 
-    </div>
+    <!--Leaderboard-->
     <div class="container">
 		<div class= "topright">
             <p class="top5"><span>Top 5</span></p>
             <div id="leaderboard" class="cellit">
-            <script type="text/javascript" src="js/global.js"></script>
-		    <script type="text/javascript" src="js/leaderboard.js"></script>
+                <script type="text/javascript" src="js/global.js"></script>
+                <script type="text/javascript" src="js/leaderboard.js"></script>
             </div>
         </div>
     </div>
-
+    <!--Multi-Line Chart-->
     <div class="container">
             <div class="bottomleft" style="height:20%">
-                <canvas id="myChart" width="400" height="200"></canvas>
+                <canvas id="chart" height="100%"></canvas>
             </div>
     </div>
-    <script type="text/javascript" src="js/time.js"></script> 
+    
     <script>
-    //Multi-Line Chart for Regional Deportations
-    const path = "data/maptest_regions.csv";
-    
-    
-    //load csv data and convert to json
-    d3.csv(path).then(function(datapoints) {
-        console.log(datapoints);
-            const arr = [];
-            for (var i = 0; i < datapoints.length; i++){ 
-                arr.push({'name': datapoints[i][0],
-                        'color': datapoints[i][27], 
-                        'values': Object.entries(datapoints[i]).slice(1,27).map(entry => entry[1])}); 
-                        }
-                        return { series:arr, 
-                                dates: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25].map((i) => time[i].date) 
-                            }
-        console.log(datapoints);
-        });
-
-        //setup
-        const data3 = {
-            labels: name,
+    //Test load for regional data with years 1993 - 2018 from reg2.js
+    console.log(reg); //Confirmed Woo!!!
+    //Multi-Line Chart using Chart.js
+    const ctx = document.getElementById('chart').getContext('2d');
+    const xlabels = reg[0].dates;
+    const myChart = new Chart (ctx, {
+        type: 'line',
+        data: {
+            labels: reg[0].dates,//['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
-                label: '# of Deportations',
-            }]
-        };
-
-        //config
-        const config = {
-            type: 'line',
-            data: data3,
-            options: {
-                scales: {
-                    y: {
-                        beginatZero: true
-                    }
+                label: reg[0].series[0].labels,
+                data: reg[0].series[0].values, //[12, 19, 3, 5, 2, 3],
+                fill: false,
+                borderColor: reg[0].series[0].color,
+                borderwidth: 0
+                },
+                {
+                label: reg[0].series[1].labels,
+                data: reg[0].series[1].values,
+                fill: false,
+                borderColor: reg[0].series[1].color,
+                },
+                {
+                label: reg[0].series[2].labels,
+                data: reg[0].series[2].values,
+                fill: false,
+                borderColor: reg[0].series[2].color,
+                },
+                {
+                label: reg[0].series[3].labels,
+                data: reg[0].series[3].values,
+                fill: false,
+                borderColor: reg[0].series[3].color,
+                },
+                {
+                label: reg[0].series[4].labels,
+                data: reg[0].series[4].values,
+                fill: false,
+                borderColor: reg[0].series[4].color,
+                },
+                {
+                label: reg[0].series[5].labels,
+                data: reg[0].series[5].values,
+                fill: false,
+                borderColor: reg[0].series[5].color,
                 }
-            }
-        };
-        
-        // render init block
-        //const myChart = new Chart(
-        //    document.getElementById('myChart'),
-        //    config
-        //);
+                ]
+                    },
+                    options: {
+                        scales: {
+                                 yAxes: [{
+                                     ticks: {
+                                         beginAtZero: true
+                                     }
+                                 }]
+                             }
+
+                        },
+                        legend: {
+                             display: false
+                         }
+                     });
  
     </script>
-
-
   </body>
 </html>

@@ -41,6 +41,7 @@
         }
     };
 
+// Marker
     var Marker = (function () {
         var M = function (options) {
             this.x = options.x;
@@ -61,12 +62,12 @@
             context.lineWidth = this.borderWidth || 0;
             context.strokeStyle = this.borderColor || '#000';
             context.fillStyle = this.color || '#000';
-            // 目前先只支持圆
+            // 目前先只支持圆 Currently only supports circle
             context.beginPath();
             if (this.style === 'circle') {
                 context.arc(0, 0, this.size, 0, Math.PI * 2, false);
             } else if (this.style === 'circle') {
-                // 将箭头后退，让箭头的尖头指向终点
+                // 将箭头后退，让箭头的尖头指向终点 Move the arrow back so that the point of the arrow points to the end
                 context.moveTo(-this.size*2, -this.size);
                 context.lineTo(-this.size*5/4, 0);
                 context.lineTo(-this.size*2, this.size);
@@ -118,7 +119,7 @@
             this.label = options.label;
             this.font = options.font;
             this.shadowBlur = options.shadowBlur;
-            this.endAngle = endAngle - this.lineWidth / radius; // 让线后退，与箭头结合
+            this.endAngle = endAngle - this.lineWidth / radius; // 让线后退，与箭头结合 Let the line go back and combine with the arrow
         };
 
         A.prototype.draw = function (context) {
@@ -309,7 +310,6 @@
         return S;
     })();
 
-
     var Migration = (function () {
         var M = function (options) {
             this.data = options.data;
@@ -407,8 +407,7 @@
                 }, this);
             }
         };
-        /*
-        */
+        
         M.prototype.start = function (canvas) {
             var that = this;
             if (!this.started) {
@@ -437,12 +436,6 @@
         };
         return M;
     })();
-
-    //create tooltip
-    //var popup = L.popup()
-    //.setContent("I am a standalone popup.");
-
-    //Marker.bindPopup(popup).openPopup();
 
     L.MigrationLayer = L.Class.extend({
         options: {
@@ -565,7 +558,7 @@
                         from: [fromPixel.x, fromPixel.y],
                         to: [toPixel.x, toPixel.y],
                         labels: d.labels,
-                        value: d.value,
+                        values: d.values,
                         color: d.color,
                         arcWidth: d.value? parseInt((d.value - minValue) * (maxWidth-1)/(maxValue - minValue)) + 1:this.options.arcWidth
                     }
