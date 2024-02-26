@@ -18,23 +18,39 @@
     <script src="js/src.js"></script>
 </head>
 
-<body>
+<main>
     <h1>A History of US Deportation</h1>
-    <div id="map"></div>
-        <div class="center">
-            <!--<input type="button" value="setData" class="btn" onclick="setData()"> -->
-            <!-- <input type="button" value="hide" class="btn" onclick="hide()">
-            <input type="button" value="show" class="btn" onclick="show()"> -->
-            <p class="yr">1993</p>
-            <input type="button" value="Pause" class="btn" onclick="pause()" />
-            <input type="button" value="Play" class="btn" onclick="play()" />
-            <!--<input type="button" value="destroy" class="btn" onclick="destroy()"> -->    
-        </div>
-    <script src="lib/leaflet.js"></script>
-    <script src="js/src.js"></script>
-    <!-- <script type="text/javascript" src="js/data_config.js"></script> -->
-    <script type="text/javascript" src="js/data_new.js"></script>
-    <script>
+
+    <section id="welcome-section">
+
+            <div id="observablehq-chart-d427ab34"></div>
+            <!-- <p>Credit: <a href="https://observablehq.com/d/52f7c23af3712808">Size: Moving bubble plot of US Deportations using D3.js by mtso</a></p> -->
+            
+            <script type="module">
+            import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+            import define from "https://api.observablehq.com/d/52f7c23af3712808.js?v=3";
+            new Runtime().module(define, name => {
+              if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-d427ab34"));
+            });
+            </script>
+
+            <div class="bottomleft">
+                <p> Top 5 Countries </p>
+            <div id="observablehq-chart-e0f06a12"></div>
+                <!-- <p>Credit: <a href="https://observablehq.com/d/d5c8f1e0d1c72571">Bar Chart Race, Explained by mtso</a></p> -->
+                
+                <script type="module">
+                import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+                import define from "https://api.observablehq.com/d/d5c8f1e0d1c72571.js?v=3";
+                new Runtime().module(define, name => {
+                if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-e0f06a12"));
+                });
+                </script>
+            </div>
+            
+        </section>
+       
+    <!-- <script>
         var lrmap = L.map('map', {zoomControl: false}).setView([0, 10], 3);
 		L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
 	        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -90,9 +106,9 @@
         //     document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + 'lng: ' + e.latlng.lng;
         //     console.log('lat: ' + e.latlng.lat, 'lng: ' + e.latlng.lng)
         // });
-    </script>
+    </script> -->
     <!--Leaderboard-->
-    <div class="container">
+    <!-- <div class="container">
 		<div class= "topright">
             <p class="top5"><span>Top 5</span></p>
             <div id="leaderboard" class="cellit">
@@ -100,78 +116,62 @@
                 <script type="text/javascript" src="js/leaderboard.js"></script>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--Multi-Line Chart-->
-    <div class="container">
+    <!-- <div class="container">
             <div class="bottomleft" style="height:20%">
-                <canvas id="chart" height="100%"></canvas>
-            </div>
-    </div>
-    
-    <script>
-    //Test load for regional data with years 1993 - 2018 from reg2.js
-    console.log(reg); //Confirmed Woo!!!
-    //Multi-Line Chart using Chart.js
-    const ctx = document.getElementById('chart').getContext('2d');
-    const xlabels = reg[0].dates;
-    const myChart = new Chart (ctx, {
-        type: 'line',
-        data: {
-            labels: reg[0].dates,//['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: reg[0].series[0].labels,
-                data: reg[0].series[0].values, //[12, 19, 3, 5, 2, 3],
-                fill: false,
-                borderColor: reg[0].series[0].color,
-                borderwidth: 0
-                },
-                {
-                label: reg[0].series[1].labels,
-                data: reg[0].series[1].values,
-                fill: false,
-                borderColor: reg[0].series[1].color,
-                },
-                {
-                label: reg[0].series[2].labels,
-                data: reg[0].series[2].values,
-                fill: false,
-                borderColor: reg[0].series[2].color,
-                },
-                {
-                label: reg[0].series[3].labels,
-                data: reg[0].series[3].values,
-                fill: false,
-                borderColor: reg[0].series[3].color,
-                },
-                {
-                label: reg[0].series[4].labels,
-                data: reg[0].series[4].values,
-                fill: false,
-                borderColor: reg[0].series[4].color,
-                },
-                {
-                label: reg[0].series[5].labels,
-                data: reg[0].series[5].values,
-                fill: false,
-                borderColor: reg[0].series[5].color,
-                }
-                ]
-                    },
-                    options: {
-                        scales: {
-                                 yAxes: [{
-                                     ticks: {
-                                         beginAtZero: true
-                                     }
-                                 }]
-                             }
+                <iframe width="1000px" height="562px" frameborder="0"
+  src="https://observablehq.com/embed/d5c8f1e0d1c72571?cells=chart"></iframe>
+                <canvas id="chart" height="100%"></canvas> -->
+            <!-- </div>
+    </div> -->
 
-                        },
-                        legend: {
-                             display: false
-                         }
-                     });
- 
-    </script>
-  </body>
+   <section id="projects" class="portfolio">
+        <div id="observablehq-title-75c3f11e"></div>
+        <div id="observablehq-viewof-year-75c3f11e" class="btn"></div>
+        <div id="observablehq-bubbleChart-75c3f11e"></div>
+       
+    <!-- <p>Credit: <a href="https://observablehq.com/d/35d65a5a39e4026d">US Deportations Bubble Chart with D3 Render by mtso</a></p> -->
+    
+        <script type="module">
+            import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+            import define from "https://api.observablehq.com/d/35d65a5a39e4026d.js?v=3";
+            new Runtime().module(define, name => {
+            if (name === "bubbleChart") return new Inspector(document.querySelector("#observablehq-bubbleChart-75c3f11e"));
+            if (name === "viewof year") return new Inspector(document.querySelector("#observablehq-viewof-year-75c3f11e"));
+            if (name === "title") return new Inspector(document.querySelector("#observablehq-title-75c3f11e"));
+            return ["year2","input","data2","data","date2"].includes(name);
+            });
+        </script>
+    </section>
+    <!-- <section id="butterfly">
+        <div id="observablehq-chart-5a5d58b6"></div>
+        <div id="observablehq-viewof-colorage-5a5d58b6"></div>
+        <div id="observablehq-viewof-split-5a5d58b6"></div>
+        <p>Credit: <a href="https://observablehq.com/d/1e01f1ddc5db3029">Bubble Chart - Split Deportations by Year by mtso</a></p> -->
+        
+        <!-- <script type="module">
+        import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+        import define from "https://api.observablehq.com/d/1e01f1ddc5db3029.js?v=3";
+        new Runtime().module(define, name => {
+          if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-5a5d58b6"));
+          if (name === "viewof colorage") return new Inspector(document.querySelector("#observablehq-viewof-colorage-5a5d58b6"));
+          if (name === "viewof split") return new Inspector(document.querySelector("#observablehq-viewof-split-5a5d58b6"));
+        });
+        </script>
+    </section>
+    <section id="butterfly">
+        <div id="observablehq-chart-a2ef6c72"></div> -->
+        <!-- <p>Credit: <a href="https://observablehq.com/d/056e7ffbc9626ce8">Butterfly: Moving bubble plot of US Deportations using D3.js by mtso</a></p> -->
+
+        <!-- <script type="module">
+            import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+            import define from "https://api.observablehq.com/d/056e7ffbc9626ce8.js?v=3";
+            new Runtime().module(define, name => {
+            if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-a2ef6c72"));
+            });
+        </script>
+    </section> --> -->
+
+</main>
 </html>
