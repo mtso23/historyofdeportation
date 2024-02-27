@@ -14,6 +14,31 @@ html,body{
   z-index: -1;
 }
 
+.welcome-section {
+	width: 100%;
+	height: 100vh;
+	background: #328CC1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: -1;
+	font-family: 'oswald', monospace;
+	color: white;
+  }
+.butterfly {
+	width: 100%;
+	height: 100vh;
+	background: #328CC1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: -1;
+	font-family: 'oswald', monospace;
+	color: white;
+  }
+
 body {
   color: #36454f;
   font-family: 'oswald', monospace;
@@ -53,7 +78,21 @@ h1 {
   font-size: 2em;
   text-shadow: 2px 2px 4px #FFFF;
 }
-
+.portfolio {
+	width: 100wh;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	background: #1D2731;
+	color: white;
+	text-align: center;
+	padding: 5rem 2rem 10rem;
+}
+.projects {
+	display: inline-block;
+	width: 100%;
+	margin: 0 0 2rem 0;
+  }
 #event{
   position: absolute;
   top: 50px;
@@ -78,17 +117,29 @@ h1 {
 }
 
 .bottomleft {
-	position: fixed;
-	margin-bottom: 50px;
+	display: inline-block;
+	position: absolute;
+	margin-bottom: 0px;
 	margin-left: 50px;
-	bottom: 0;
-	width: 33%;
-	height: 25%;
+	bottom: 0px;
+	width: 45%;
+	height: 30%;
 	z-index: 10;
-	background:white;
+	/* background:white; */
 	opacity: 75%;
 	padding: 20px;
+	font-size: 1.75em;
   }
+
+h2 {
+	font-family: 'oswald', monospace;
+	color: white;
+	font-size: 0.75em;
+}
+p {
+	font-family: 'oswald', monospace;
+	color: white;
+}
 
 .top5 {
   font-family: 'oswald', monospace;
