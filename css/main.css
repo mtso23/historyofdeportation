@@ -1,6 +1,9 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Cinzel:wght@400..900&display=swap');
+
 
 /* Styles */
 html,body{
@@ -35,17 +38,17 @@ html,body{
 	justify-content: center;
 	align-items: center;
 	z-index: -1;
-	font-family: 'oswald', monospace;
+	font-family: 'Alegreya', serif;
 	color: white;
   }
 
 body {
   color: #36454f;
-  font-family: 'oswald', monospace;
+  font-family: 'Alegreya', serif;
 }
 
 h1 {
-  font-family: 'Oswald', monospace;
+  font-family: 'Alegreya', serif;
   font-weight: 500;
   font-size: 2.5em;
   padding: 0em;
@@ -132,17 +135,17 @@ h1 {
   }
 
 h2 {
-	font-family: 'oswald', monospace;
+	font-family: 'Alegreya', serif;
 	color: white;
 	font-size: 0.75em;
 }
 p {
-	font-family: 'oswald', monospace;
+	font-family: 'Alegreya', serif;
 	color: white;
 }
 
 .top5 {
-  font-family: 'oswald', monospace;
+  font-family: 'Alegreya', serif;
   font-size: 1.5em;/*24px;*/
   z-index: 10;
   font-weight: 400;
