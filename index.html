@@ -23,16 +23,17 @@
 
     <section id="welcome-section">
 
-            <div id="observablehq-chart-d427ab34"></div>
-            <!-- <p>Credit: <a href="https://observablehq.com/d/52f7c23af3712808">Size: Moving bubble plot of US Deportations using D3.js by mtso</a></p> -->
-            
-            <script type="module">
-            import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-            import define from "https://api.observablehq.com/d/52f7c23af3712808.js?v=3";
-            new Runtime().module(define, name => {
-              if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-d427ab34"));
-            });
-            </script>
+           <div id="observablehq-chart-ceaeeec5"></div>
+<!-- 		<p>Credit: <a href="https://observablehq.com/d/b9062e5ea30e27fc">TESTING Size: Moving bubble plot of US Deportations using D3.js by mtso</a></p> -->
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+		<script type="module">
+		import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+		import define from "https://api.observablehq.com/d/b9062e5ea30e27fc.js?v=4";
+		new Runtime().module(define, name => {
+		  if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-ceaeeec5"));
+		});
+		</script>
 
             <div class="bottomleft">
                 <p> Top 5 Countries </p>
