@@ -125,9 +125,9 @@ h1 {
 	position: absolute;
 	margin-bottom: 0px;
 	margin-left: 50px;
-	bottom: 10px;
+	bottom: 20px;
 	width: 40%;
-	height: 40%;
+	height: 50%;
 	z-index: 10;
 	/* background:white; */
 	opacity: 100%;
