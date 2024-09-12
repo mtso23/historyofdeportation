@@ -38,16 +38,17 @@
 
             <div class="bottomleft">
                 <p> Top 5 Countries </p>
-            <div id="observablehq-chart-e0f06a12"></div>
-                <!-- <p>Credit: <a href="https://observablehq.com/d/d5c8f1e0d1c72571">Bar Chart Race, Explained by mtso</a></p> -->
-                
-                <script type="module">
-                import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-                import define from "https://api.observablehq.com/d/d5c8f1e0d1c72571.js?v=3";
-                new Runtime().module(define, name => {
-                if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-e0f06a12"));
-                });
-                </script>
+      		 <div id="observablehq-chart-64f99032"></div>
+<!-- 		<p>Credit: <a href="https://observablehq.com/d/fad6fa46948df9fa@3117">Bar Chart Race, Explained Demo by mtso</a></p> -->
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+		<script type="module">
+		import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+		import define from "https://api.observablehq.com/d/fad6fa46948df9fa@3117.js?v=4";
+		new Runtime().module(define, name => {
+		  if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-64f99032"));
+		});
+		</script>
             </div>
             
         </section>
