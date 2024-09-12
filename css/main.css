@@ -126,13 +126,13 @@ h1 {
 	margin-bottom: 0px;
 	margin-left: 50px;
 	bottom: 0px;
-	width: 45%;
+	width: 40%;
 	height: 30%;
 	z-index: 10;
 	/* background:white; */
 	opacity: 100%;
 	padding: 20px;
-/* 	font-size: 1.75em; */
+	font-size: 1.75em;
   }
 
 h2 {
