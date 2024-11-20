@@ -51,7 +51,19 @@
 
             <div class="bottomleft">
 <!--                 <p>Top 5</p> -->
-			<iframe width="100%" height="331" frameborder="0" src="https://observablehq.com/embed/fad6fa46948df9fa?cells=barchart"></iframe>
+		    <div id="observablehq-barchart-ebc6ff8c"></div>
+<!-- 			<p>Credit: <a href="https://observablehq.com/d/fad6fa46948df9fa">Bar Chart Race, Explained Demo by mtso</a></p> -->
+			
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+			<script type="module">
+			import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+			import define from "https://api.observablehq.com/d/fad6fa46948df9fa.js?v=4";
+			new Runtime().module(define, name => {
+			  if (name === "barchart") return new Inspector(document.querySelector("#observablehq-barchart-ebc6ff8c"));
+			});
+			</script>
+
+<!-- 			<iframe width="100%" height="331" frameborder="0" src="https://observablehq.com/embed/fad6fa46948df9fa?cells=barchart"></iframe> -->
     
 <!--       		<div id="observablehq-barchart-bd7d244b"></div>
 <!-- 		<p>Credit: <a href="https://observablehq.com/d/fad6fa46948df9fa@3142">Bar Chart Race, Explained Demo by mtso</a></p> -->
