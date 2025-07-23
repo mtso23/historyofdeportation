@@ -150,7 +150,18 @@
         <div id="observablehq-bubbleChart-75c3f11e"></div>
        
     <!-- <p>Credit: <a href="https://observablehq.com/d/35d65a5a39e4026d">US Deportations Bubble Chart with D3 Render by mtso</a></p> -->
-    
+	<div id="observablehq-chart1-2bf38536"></div>
+<!-- 		<p>Credit: <a href="https://observablehq.com/d/e6463da98d3977d7@2336">TESTING Size: Moving bubble plot of US Deportations using D3.js by mtso</a></p> -->
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+		<script type="module">
+		import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+		import define from "https://api.observablehq.com/d/e6463da98d3977d7@2336.js?v=4";
+		new Runtime().module(define, name => {
+		  if (name === "chart1") return new Inspector(document.querySelector("#observablehq-chart1-2bf38536"));
+		});
+		</script>
+	   
         <script type="module">
             import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
             import define from "https://api.observablehq.com/d/35d65a5a39e4026d.js?v=3";
